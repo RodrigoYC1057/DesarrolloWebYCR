@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Modo Oscuro</title>
+    
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            transition: background-color 0.4s, color 0.4s;
+            margin: 0;
+            height: 100vh;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 22px;
+        }
+
+        
+        .tarjeta {
+            border: 1px solid #ccc;
+            padding: 30px;
+            border-radius: 8px;
+            width: 320px;
+            transition: border-color 0.4s;
+        }
+
+        h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        
+        #btnModo {
+            background-color: #222;
+            color: white;
+            border: 1px solid #222;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nota-inferior {
+            margin-top: 30px;
+            font-style: italic;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body style="background-color: white; color: black;">
+
+    <h2>Interruptor de Estilo Dinámico (Modo Oscuro) </h2>
+
+    <div class="tarjeta" id="contenedorTarjeta">
+        <h3>Mi sitio </h3>
+        
+        <p id="textoDescripcion">Contenido en color oscuro<br>sobre fondo blanco. </p>
+        
+        <button id="btnModo">Modo Oscuro </button>
+    </div>
+
+    <p class="nota-inferior">El botón alterna entre los dos estados leyendo el color actual del &lt;body&gt; </p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnModo = document.getElementById('btnModo');
+            const textoDescripcion = document.getElementById('textoDescripcion');
+            const contenedorTarjeta = document.getElementById('contenedorTarjeta');
+
+            btnModo.addEventListener('click', () => {
+                
+                const colorFondo = document.body.style.backgroundColor;
+
+                
+                
+                if (colorFondo === 'white' || colorFondo === 'rgb(255, 255, 255)') {
+                    
+                    
+                    document.body.style.backgroundColor = 'black';
+                    document.body.style.color = 'white';
+                    
+                    
+                    textoDescripcion.innerHTML = 'Contenido en color claro<br>sobre fondo negro.';
+                    btnModo.textContent = 'Modo Claro ';
+                    
+                    
+                    btnModo.style.backgroundColor = 'white';
+                    btnModo.style.color = 'black';
+                    contenedorTarjeta.style.borderColor = '#555';
+
+                } else {
+                    
+                    
+                    document.body.style.backgroundColor = 'white';
+                    document.body.style.color = 'black';
+                    
+                    
+                    textoDescripcion.innerHTML = 'Contenido en color oscuro<br>sobre fondo blanco.';
+                    btnModo.textContent = 'Modo Oscuro';
+                    
+                    
+                    btnModo.style.backgroundColor = '#222';
+                    btnModo.style.color = 'white';
+                    contenedorTarjeta.style.borderColor = '#ccc';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

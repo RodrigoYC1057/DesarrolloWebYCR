@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Idéntico al Modelo</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        
+        table {
+            border-collapse: collapse;
+            margin-bottom: 5px;
+            background-color: white;
+        }
+
+        td {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #444;
+            cursor: pointer;
+        }
+
+        
+        .controles {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 10px;
+            margin-left: 20px; 
+        }
+
+        .controles input[type="color"] {
+            width: 55px;
+            height: 25px;
+            padding: 0;
+            border: 1px solid #000;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        
+        .hex-box {
+            border: 1px solid #888;
+            padding: 3px 8px;
+            background: white;
+            height: 17px;
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .nota {
+            font-style: italic;
+            color: #777;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Tabla 5x5 con selector de color</h3>
+        
+        <div id="contenedor-tabla"></div>
+        
+        <div class="controles">
+            <span>Color seleccionado:</span>
+            <input type="color" id="colorPicker" value="#ff9966">
+            <div class="hex-box" id="hexValue">#ff9966</div>
+        </div>
+        
+        <span class="nota">Al hacer clic en una celda, esta toma el color del input</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contenedor = document.getElementById('contenedor-tabla');
+            const inputColor = document.getElementById('colorPicker');
+            const hexValue = document.getElementById('hexValue');
+
+            
+            inputColor.addEventListener('input', () => {
+                hexValue.textContent = inputColor.value;
+            });
+
+            
+            const tabla = document.createElement('table');
+
+            for (let i = 0; i < 5; i++) {
+                const fila = document.createElement('tr');
+                
+                for (let j = 0; j < 5; j++) {
+                    const celda = document.createElement('td');
+
+                    
+                    celda.addEventListener('click', () => {
+                        celda.style.backgroundColor = inputColor.value; 
+                    });
+
+                    fila.appendChild(celda);
+                }
+                tabla.appendChild(fila);
+            }
+
+            contenedor.appendChild(tabla);
+        });
+    </script>
+</body>
+</html>

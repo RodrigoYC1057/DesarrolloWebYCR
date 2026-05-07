@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4 - Inspector de Enlaces</title>
+    <style>
+        /* Estilos para que se vea igual a la vista esperada del PDF */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        .contenedor {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            padding: 30px;
+            width: 500px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h2 { margin-top: 0; font-size: 1.2em; }
+        h3 { color: #333; }
+        
+        /* Estilo de los enlaces */
+        a {
+            color: #3366cc;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 20px;
+        }
+        a:hover { text-decoration: underline; }
+
+        /* Estilo para los párrafos generados por JS */
+        .url-info {
+            margin: 5px 0 0 0;
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .footer-nota {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h2>Inspector de Enlaces</h2>
+        <h3>Mis enlaces favoritos</h3>
+
+        <a href="https://www.google.com">Buscador Google</a>
+        <a href="https://developer.mozilla.org">Documentación MDN</a>
+        <a href="https://www.usfx.bo">Universidad USFX</a>
+
+        <div class="footer-nota">
+            El script recorre todos los &lt;a&gt; y agrega un &lt;p&gt; debajo de cada uno con el href
+        </div>
+    </div>
+
+    <script>
+        // Lógica de manipulación del DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Recorrer todos los enlaces de la página 
+            const enlaces = document.querySelectorAll('a');
+
+            enlaces.forEach(enlace => {
+                // 2. Leer el valor del atributo href de cada uno 
+                const url = enlace.getAttribute('href');
+
+                // 3. Crear el párrafo <p> dinámicamente [cite: 231]
+                const parrafo = document.createElement('p');
+                parrafo.className = 'url-info'; // Aplicar estilo
+                
+                // Definir el texto requerido: "Este enlace te lleva a: [URL]" [cite: 231]
+                parrafo.textContent = `Este enlace te lleva a: ${url}`;
+
+                // 4. Insertar el párrafo justo debajo del enlace 
+                enlace.insertAdjacentElement('afterend', parrafo);
+            });
+        });
+    </script>
+</body>
+</html>

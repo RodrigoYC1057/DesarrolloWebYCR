@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5 - Final USFX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+        }
+
+        .contenedor-principal {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 800px;
+        }
+
+        h2 { text-align: center; margin-bottom: 30px; }
+
+        /* Disposición en dos columnas para la lista y el resultado */
+        .layout-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        /* Cuadro de la Lista */
+        .cuadro-lista {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: 45%;
+            min-height: 200px;
+        }
+
+        .cuadro-lista p { font-weight: bold; margin-top: 0; }
+
+        /* Viñetas activadas */
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+
+        li {
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .seleccionado {
+            border: 2px solid #007bff !important;
+            background-color: #cce5ff !important;
+        }
+
+        /* Flecha indicadora */
+        .flecha {
+            font-size: 30px;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        /* Cuadro de Resultado */
+        .cuadro-resultado {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: 35%;
+            text-align: center;
+            min-height: 150px;
+        }
+
+        .cuadro-resultado p { font-weight: bold; margin-bottom: 15px; }
+
+        #preview {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .codigo-estilo {
+            font-family: monospace;
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Controles: Color y Botón en la misma línea */
+        .controles-fila {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 150px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .info-txt { font-size: 13px; color: #007bff; margin-top: 10px; }
+        .footer-nota { font-size: 12px; color: #888; text-align: center; margin-top: 30px; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-principal">
+        <h2>Cambio de color de fondo en lista &lt;li&gt;</h2>
+
+        <div class="layout-flex">
+            <!-- Bloque Izquierdo -->
+            <div class="cuadro-lista">
+                <p>Lista de tareas:</p>
+                <ul id="miLista">
+                    <li>Estudiar JavaScript</li>
+                    <li>Practicar DOM seleccionado</li>
+                    <li>Hacer ejercicios</li>
+                </ul>
+                <div class="info-txt">Elemento seleccionado: <span id="txtSeleccion">"Ninguno"</span></div>
+            </div>
+
+            <!-- Flecha -->
+            <div class="flecha">→</div>
+
+            <!-- Bloque Derecho (Resultado) -->
+            <div class="cuadro-resultado">
+                <p>Resultado</p>
+                <div id="preview">Selecciona una tarea</div>
+                <div class="codigo-estilo" id="codigoRef">backgroundColor = ""</div>
+            </div>
+        </div>
+
+        <!-- Controles alineados -->
+        <div class="controles-fila">
+            <label>Color:</label>
+            <input type="text" id="colorVal" placeholder="Ej: blue">
+            <button id="btnEjecutar">Cambiar color fondo</button>
+        </div>
+
+        <p class="footer-nota">
+            El usuario selecciona un &lt;li&gt; con clic, escribe un color en inglés y al pulsar el botón se aplica ese color al elemento seleccionado.
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const listItems = document.querySelectorAll('#miLista li');
+            const txtSeleccion = document.getElementById('txtSeleccion');
+            const preview = document.getElementById('preview');
+            const codigoRef = document.getElementById('codigoRef');
+            const btn = document.getElementById('btnEjecutar');
+            const inputColor = document.getElementById('colorVal');
+
+            let liActivo = null;
+
+            // Selección de elementos
+            listItems.forEach(li => {
+                li.addEventListener('click', function() {
+                    listItems.forEach(item => item.classList.remove('seleccionado'));
+                    this.classList.add('seleccionado');
+                    
+                    liActivo = this;
+                    txtSeleccion.textContent = `"${this.textContent}"`;
+                    
+                    // Actualizar cuadro de resultado
+                    preview.textContent = this.textContent;
+                    preview.style.backgroundColor = this.style.backgroundColor || "#fff";
+                    preview.style.color = (this.style.backgroundColor === "black") ? "white" : "black";
+                    codigoRef.textContent = `backgroundColor = "${this.style.backgroundColor || 'none'}"`;
+                });
+            });
+
+            // Acción del botón
+            btn.addEventListener('click', () => {
+                const color = inputColor.value.trim().toLowerCase();
+
+                if (!liActivo) {
+                    alert("Selecciona un elemento de la lista primero.");
+                    return;
+                }
+
+                if (color) {
+                    // Aplicar color al elemento real y al preview
+                    liActivo.style.backgroundColor = color;
+                    preview.style.backgroundColor = color;
+                    
+                    // Ajustar color de texto para visibilidad si es negro
+                    if (color === 'black' || color === '#000000') {
+                        liActivo.style.color = "white";
+                        preview.style.color = "white";
+                    } else {
+                        liActivo.style.color = "black";
+                        preview.style.color = "black";
+                    }
+
+                    codigoRef.textContent = `backgroundColor = "${color}"`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
