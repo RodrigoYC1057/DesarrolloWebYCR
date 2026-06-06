@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de Presentación</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Archivo CSS externo -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <!--
+        ESTRUCTURA SEMÁNTICA:
+        - header  → encabezado de la tarjeta (foto y nombre)
+        - section → sección de descripción
+        - article → sección de habilidades
+        - footer  → pie con el botón de contacto
+    -->
+
+    <!-- Contenedor principal que centra la tarjeta con Flexbox -->
+    <div class="pagina">
+
+        <!-- TARJETA -->
+        <div class="tarjeta">
+
+            <!-- HEADER: Foto, nombre y carrera -->
+            <header class="tarjeta-header">
+                <img
+                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=estudiante"
+                    alt="Foto de perfil"
+                    class="foto-perfil"
+                >
+                <h1 class="nombre">Tu Nombre Completo</h1>
+                <p class="carrera">Ingeniería de Sistemas</p>
+            </header>
+
+            <!-- SECTION: Descripción personal -->
+            <section class="tarjeta-descripcion">
+                <p>
+                    Estudiante apasionado por el desarrollo web
+                    y la creación de soluciones tecnológicas innovadoras.
+                    Me gusta aprender nuevas herramientas y aplicarlas
+                    en proyectos reales.
+                </p>
+            </section>
+
+            <!-- ARTICLE: Lista de habilidades -->
+            <article class="tarjeta-habilidades">
+                <h2>Habilidades</h2>
+                <ul class="lista-habilidades">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Flexbox</li>
+                    <li>JavaScript</li>
+                    <li>Lógica</li>
+                </ul>
+            </article>
+
+            <!-- FOOTER: Botón de contacto -->
+            <footer class="tarjeta-footer">
+                <a href="mailto:tu@email.com" class="btn-contacto">
+                    Contactar
+                </a>
+            </footer>
+
+        </div><!-- fin .tarjeta -->
+
+    </div><!-- fin .pagina -->
+
+</body>
+</html>

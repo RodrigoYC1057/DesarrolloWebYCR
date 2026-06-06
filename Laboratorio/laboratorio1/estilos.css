@@ -1,0 +1,193 @@
+
+/* 1. VARIABLES DE COLOR  */
+:root {
+    --color-fondo:        #dbe9f7;       
+    --color-tarjeta:      #ffffff;       
+    --color-primario:     #2a7bbf;       
+    --color-acento:       #1a5fa0;       
+    --color-texto:        #2d3748;       
+    --color-subtexto:     #718096;       
+    --color-habilidad-bg: #e8f0fe;       
+    --fuente-principal:   'Poppins', sans-serif;
+}
+
+
+/* 2. RESET BÁSICO*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+}
+
+
+/* 3. PÁGINA COMPLETA (FLEXBOX PARA CENTRAR) */
+.pagina {
+    font-family: var(--fuente-principal);
+    min-height: 100vh;           
+
+    
+    background-color: var(--color-fondo);
+
+    
+    background-image: linear-gradient(
+        135deg,
+        #dbe9f7 0%,
+        #c3d9f0 50%,
+        #a8c5e8 100%
+    );
+
+    
+    display: flex;
+    justify-content: center;   
+    align-items: center;       
+
+    padding: 40px 20px;        
+}
+
+
+/* 4. TARJETA (MODELO DE CAJA)*/
+.tarjeta {
+    background-color: var(--color-tarjeta);
+
+    
+    width: 380px;
+    padding: 40px 32px;         
+    margin: 20px;                
+    border: 2px solid #b8d4ee;   
+    border-radius: 20px;         
+
+    
+    box-shadow: 0 8px 32px rgba(42, 123, 191, 0.15);
+
+    
+    text-align: center;
+}
+
+
+/* 5. HEADER DE LA TARJETA */
+.tarjeta-header {
+    margin-bottom: 24px;         
+    padding-bottom: 20px;        
+    border-bottom: 1px solid #e2ecf6;  
+}
+
+/* Foto de perfil circular */
+.foto-perfil {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;          
+    border: 3px solid var(--color-primario);
+    margin-bottom: 16px;
+    background-color: #e8f0fe;
+}
+
+/* Nombre completo */
+.nombre {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    margin-bottom: 6px;
+}
+
+/* Carrera */
+.carrera {
+    font-size: 0.95rem;
+    color: var(--color-subtexto);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+
+/* 6. SECCIÓN DE DESCRIPCIÓN*/
+.tarjeta-descripcion {
+    padding: 0 8px 24px;         
+    margin-bottom: 8px;
+    color: var(--color-subtexto);
+    font-size: 0.9rem;
+    line-height: 1.7;            
+}
+
+
+/* 7. HABILIDADES (FLEXBOX EN FILA)  */
+.tarjeta-habilidades {
+    margin-bottom: 28px;
+    padding: 20px 12px;
+    border: 1px solid #e2ecf6;
+    border-radius: 12px;
+    background-color: #f7faff;
+}
+
+.tarjeta-habilidades h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-subtexto);
+    margin-bottom: 14px;
+}
+
+/* Lista sin viñetas */
+.lista-habilidades {
+    list-style: none;
+
+    /* FLEXBOX:  */
+    display: flex;
+    flex-wrap: wrap;             
+    justify-content: center;
+    gap: 10px;                   
+}
+
+/* Cada habilidad individual */
+.lista-habilidades li {
+    background-color: var(--color-habilidad-bg);
+    color: var(--color-primario);
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    /* MODELO DE CAJA en cada chip */
+    padding: 6px 16px;
+    border: 1px solid #b8d4ee;
+    border-radius: 20px;
+
+    /* Transición para efecto hover */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto hover en habilidades (punto extra) */
+.lista-habilidades li:hover {
+    background-color: var(--color-primario);
+    color: #ffffff;
+    cursor: default;
+}
+
+
+/*  8. FOOTER CON BOTÓN DE CONTACTO */
+.tarjeta-footer {
+    padding-top: 8px;
+}
+
+/* Botón de contacto */
+.btn-contacto {
+    display: inline-block;
+    background-color: var(--color-primario);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+
+    /* MODELO DE CAJA del botón */
+    padding: 12px 40px;
+    border-radius: 30px;
+    border: 2px solid var(--color-primario);
+
+    /* Transición CSS (punto extra) */
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.2s ease;
+}
+
+/* Efecto hover en el botón (punto extra) */
+.btn-contacto:hover {
+    background-color: #ffffff;
+    color: var(--color-acento);
+    transform: translateY(-2px);  /* sube ligeramente al pasar el mouse */
+}

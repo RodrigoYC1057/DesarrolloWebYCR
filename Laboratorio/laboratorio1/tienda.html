@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiTienda - Tecnología</title>
+
+    <!-- Google Fonts (punto extra) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Archivo CSS externo -->
+    <link rel="stylesheet" href="tienda.css">
+</head>
+<body>
+
+    <!--
+        ESTRUCTURA SEMÁNTICA OBLIGATORIA:
+        header → barra superior con logo y nav
+        main   → contenido principal
+          section → sección hero (título + botón)
+          section → sección de productos con articles
+        footer  → pie de página
+    -->
+
+    <!--HEADER: Logo + Menú de navegación -->
+    <header class="header">
+        <div class="header-logo">
+            🛒 <span>MiTienda</span>
+        </div>
+
+        <!-- NAV: menú horizontal con Flexbox -->
+        <nav class="nav">
+            <a href="#inicio" class="nav-link">Inicio</a>
+            <a href="#productos" class="nav-link">Productos</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- MAIN: Contenido principal -->
+    <main>
+
+        <!-- SECCIÓN HERO: Título + descripción + botón -->
+        <section class="hero" id="inicio">
+            <h1 class="hero-titulo">Descubre la Mejor Tecnología</h1>
+            <p class="hero-descripcion">
+                Encuentra los gadgets más innovadores al mejor precio del mercado.
+            </p>
+            <a href="#productos" class="btn-compra">Comprar Ahora</a>
+        </section>
+
+        <!-- SECCIÓN DE PRODUCTOS: 3 tarjetas alineadas con Flexbox -->
+        <section class="seccion-productos" id="productos">
+            <h2 class="seccion-titulo">Nuestros Productos</h2>
+
+            <!-- Contenedor Flex de las tarjetas -->
+            <div class="productos-grid">
+
+                <!-- ARTICLE: Tarjeta Producto 1 -->
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen">💻</div>
+                    <h3 class="producto-nombre">Laptop Pro</h3>
+                    <p class="producto-descripcion">Ideal para programar y renderizar.</p>
+                    <p class="producto-precio">$1,299</p>
+                    <button class="btn-carrito">Añadir al carrito</button>
+                </article>
+
+                <!-- ARTICLE: Tarjeta Producto 2 -->
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen">🖥️</div>
+                    <h3 class="producto-nombre">Monitor 4K</h3>
+                    <p class="producto-descripcion">Visualiza tu código con la mejor claridad.</p>
+                    <p class="producto-precio">$549</p>
+                    <button class="btn-carrito">Añadir al carrito</button>
+                </article>
+
+                <!-- ARTICLE: Tarjeta Producto 3 -->
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen">⌨️</div>
+                    <h3 class="producto-nombre">Teclado Mecánico</h3>
+                    <p class="producto-descripcion">Escritura rápida y cómoda para horas de trabajo.</p>
+                    <p class="producto-precio">$189</p>
+                    <button class="btn-carrito">Añadir al carrito</button>
+                </article>
+
+            </div><!-- fin .productos-grid -->
+        </section>
+
+    </main>
+
+    <!-- FOOTER: Pie de página -->
+    <footer class="footer" id="contacto">
+        <p>© 2025 MiTienda. Todos los derechos reservados.</p>
+        <p class="footer-sub">contacto@mitienda.com</p>
+    </footer>
+
+</body>
+</html>
