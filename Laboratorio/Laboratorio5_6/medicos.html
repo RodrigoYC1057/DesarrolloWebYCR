@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Médicos - Sistema de Citas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background:#f0f4f8">
+
+<!-- NAVEGACIÓN -->
+<nav class="navbar navbar-dark px-4 py-3" style="background:#0d6efd">
+    <span class="navbar-brand fw-bold">🏥 Citas Médicas</span>
+    <div>
+        <a href="index.php"     class="btn btn-light btn-sm me-2">Inicio</a>
+        <a href="medicos.php"   class="btn btn-light btn-sm me-2">Médicos</a>
+        <a href="pacientes.php" class="btn btn-light btn-sm me-2">Pacientes</a>
+        <a href="citas.php"     class="btn btn-light btn-sm">Citas</a>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h3>👨‍⚕️ Gestión de Médicos</h3>
+
+    <!-- BOTÓN para abrir el modal de registro -->
+    <button class="btn btn-primary mb-3" onclick="abrirModalNuevo()">+ Nuevo Médico</button>
+
+    <!-- ÁREA donde se muestra la tabla (se actualiza con AJAX) -->
+    <div id="tabla-medicos"></div>
+</div>
+
+<!-- ===================== MODAL FORMULARIO ===================== -->
+<div class="modal fade" id="modalMedico" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tituloModal">Nuevo Médico</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Campo oculto para saber si es edición o nuevo -->
+        <input type="hidden" id="medicoId" value="">
+
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input type="text" id="nombre" class="form-control" placeholder="Dr. Juan Pérez">
+        </div>
+        <div class="mb-3">
+            <label>Especialidad</label>
+            <input type="text" id="especialidad" class="form-control" placeholder="Cardiología">
+        </div>
+        <div class="mb-3">
+            <label>Teléfono</label>
+            <input type="text" id="telefono" class="form-control" placeholder="591-7xxxxxxx">
+        </div>
+        <div class="mb-3">
+            <label>Correo</label>
+            <input type="email" id="correo" class="form-control" placeholder="correo@ejemplo.com">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary" onclick="guardarMedico()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODAL CONFIRMACIÓN ELIMINAR ===================== -->
+<div class="modal fade" id="modalEliminar" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">¿Eliminar?</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Seguro que deseas eliminar este médico?</p>
+        <input type="hidden" id="idEliminar">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-danger" onclick="confirmarEliminar()">Sí, eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODAL MENSAJE ===================== -->
+<div class="modal fade" id="modalMensaje" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body text-center py-4">
+        <p id="textoMensaje" class="fs-5"></p>
+        <button class="btn btn-primary mt-2" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+// ---- Al cargar la página, traemos la tabla de médicos ----
+window.onload = function() {
+    cargarMedicos();
+};
+
+// ---- Función para cargar y mostrar la tabla ----
+function cargarMedicos() {
+    fetch('ajax/medicos_ajax.php?accion=listar')
+        .then(resp => resp.text())
+        .then(html => {
+            document.getElementById('tabla-medicos').innerHTML = html;
+        });
+}
+
+// ---- Abrir modal para NUEVO médico ----
+function abrirModalNuevo() {
+    document.getElementById('tituloModal').innerText = 'Nuevo Médico';
+    document.getElementById('medicoId').value = '';
+    document.getElementById('nombre').value = '';
+    document.getElementById('especialidad').value = '';
+    document.getElementById('telefono').value = '';
+    document.getElementById('correo').value = '';
+    new bootstrap.Modal(document.getElementById('modalMedico')).show();
+}
+
+// ---- Abrir modal para EDITAR médico ----
+function editarMedico(id, nombre, especialidad, telefono, correo) {
+    document.getElementById('tituloModal').innerText = 'Editar Médico';
+    document.getElementById('medicoId').value    = id;
+    document.getElementById('nombre').value      = nombre;
+    document.getElementById('especialidad').value= especialidad;
+    document.getElementById('telefono').value    = telefono;
+    document.getElementById('correo').value      = correo;
+    new bootstrap.Modal(document.getElementById('modalMedico')).show();
+}
+
+// ---- Guardar médico (insertar o editar) ----
+function guardarMedico() {
+    const id          = document.getElementById('medicoId').value;
+    const nombre      = document.getElementById('nombre').value.trim();
+    const especialidad= document.getElementById('especialidad').value.trim();
+    const telefono    = document.getElementById('telefono').value.trim();
+    const correo      = document.getElementById('correo').value.trim();
+
+    // Validación básica
+    if (!nombre || !especialidad) {
+        mostrarMensaje('⚠️ Nombre y especialidad son obligatorios.');
+        return;
+    }
+
+    // Preparamos los datos para enviar
+    const datos = new FormData();
+    datos.append('accion', id ? 'editar' : 'insertar');
+    datos.append('id', id);
+    datos.append('nombre', nombre);
+    datos.append('especialidad', especialidad);
+    datos.append('telefono', telefono);
+    datos.append('correo', correo);
+
+    fetch('ajax/medicos_ajax.php', {
+        method: 'POST',
+        body: datos
+    })
+    .then(resp => resp.text())
+    .then(msg => {
+        bootstrap.Modal.getInstance(document.getElementById('modalMedico')).hide();
+        mostrarMensaje(msg);
+        cargarMedicos(); // Actualiza la tabla
+    });
+}
+
+// ---- Abrir modal de confirmación para eliminar ----
+function eliminarMedico(id) {
+    document.getElementById('idEliminar').value = id;
+    new bootstrap.Modal(document.getElementById('modalEliminar')).show();
+}
+
+// ---- Confirmar eliminación ----
+function confirmarEliminar() {
+    const id = document.getElementById('idEliminar').value;
+
+    const datos = new FormData();
+    datos.append('accion', 'eliminar');
+    datos.append('id', id);
+
+    fetch('ajax/medicos_ajax.php', {
+        method: 'POST',
+        body: datos
+    })
+    .then(resp => resp.text())
+    .then(msg => {
+        bootstrap.Modal.getInstance(document.getElementById('modalEliminar')).hide();
+        mostrarMensaje(msg);
+        cargarMedicos();
+    });
+}
+
+// ---- Mostrar modal de mensaje ----
+function mostrarMensaje(texto) {
+    document.getElementById('textoMensaje').innerText = texto;
+    new bootstrap.Modal(document.getElementById('modalMensaje')).show();
+}
+
+</script>
+</body>
+</html>
