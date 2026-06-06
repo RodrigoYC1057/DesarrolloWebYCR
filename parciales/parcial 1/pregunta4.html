@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 17 - Aumentar Guiones</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { width: 320px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; background-color: #f9f9f9; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 8px; margin: 10px 0; box-sizing: border-box; }
+        input[type="submit"] { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; cursor: pointer; width: 100%; }
+        input[type="submit"]:hover { background-color: #45a049; }
+        a.volver { display: block; text-align: center; margin-top: 15px; color: #333; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Separador de Palabras</h2>
+    <form action="mostrarguiones.php" method="GET">
+        <label for="cadena">Introduce una palabra (Ej: EXAMEN):</label>
+        <input type="text" id="cadena" name="cadena" required>
+
+        <label for="guiones">Número de guiones a insertar:</label>
+        <input type="number" id="guiones" name="guiones" min="1" required>
+
+        <input type="submit" value="Generar">
+    </form>
+    
+    <a href="index.html" class="volver">Volver al Menú Principal</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+-------------
+aceso
+------------
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ejercicio18.html");
+    exit();
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Acceso</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+        .panel { width: 400px; margin: 0 auto; border: 1px solid #333; padding: 20px; background-color: #f4f4f4; }
+        .menu-roles { list-style: none; padding: 0; }
+        .menu-roles li { margin: 10px 0; }
+        .menu-roles a { display: block; padding: 10px; background-color: #fff; border: 1px solid #ccc; text-decoration: none; color: #333; font-weight: bold;}
+        .menu-roles a:hover { background-color: #ddd; }
+        a.salir { color: red; }
+    </style>
+</head>
+<body>
+
+    <div class="panel">
+        <h2>Panel de Acceso</h2>
+        
+        <?php
+        echo "<p>Bienvenido, tu nivel de acceso es: <b>" . $_SESSION['usuario'] . "</b></p>";
+        echo "<hr>";
+
+        echo "<ul class='menu-roles'>";
+        if ($_SESSION['usuario'] == "admin") {
+            echo "<li><a href='#'>Crear</a></li>";
+            echo "<li><a href='#'>Listar</a></li>";
+            echo "<li><a href='#'>Borrar</a></li>";
+            echo "<li><a href='index.html' class='salir'>Salir al Menú Principal</a></li>";
+        } else {
+            echo "<li><a href='#'>Listar</a></li>";
+            echo "<li><a href='index.html' class='salir'>Salir al Menú Principal</a></li>";
+        }
+        echo "</ul>";
+        ?>
+    </div>
+
+</body>
+</html>
+-----------
+autenticar
+------------
+<?php
+
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticando...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mensaje {
+            font-size: 20px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #333;
+            background-color: #e6e6e6;
+            display: inline-block;
+        }
+
+        a.boton {
+            display: inline-block;
+            background-color: #0000cc;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['usuario']) && isset($_POST['contrasena'])) {
+
+        $user = $_POST['usuario'];
+        $pass = $_POST['contrasena'];
+
+
+        if ($user == "admin" && $pass == "admin") {
+            $_SESSION['usuario'] = "admin";
+        } else {
+            $_SESSION['usuario'] = "usuario";
+        }
+
+        echo "<h2>Autenticación completada</h2>";
+        echo "<div class='mensaje'>";
+
+        echo "La variable de sesión guardada es: <b>" . $_SESSION['usuario'] . "</b>";
+        echo "</div><br>";
+
+
+        echo "<a href='acceso.php' class='boton'>Continuar a la página de Acceso</a>";
+    } else {
+        echo "<h3>Faltan credenciales. Usa el formulario.</h3>";
+        echo "<a href='ejercicio18.html'>Volver</a>";
+    }
+    ?>
+
+</body>
+
+</html>
+-------------
+mostrar
+--------------
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado - Ejercicio 6</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+        .resultado { font-size: 20px; margin: 20px auto; padding: 20px; border: 2px solid #333; display: inline-block; background-color: #f4f4f4;}
+        .texto-rojo { color: red; }
+        a.volver { display: block; margin-top: 20px; color: #333; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nombre']) && isset($_POST['ciudad'])) {
+        
+        $nombre = $_POST['nombre'];
+        $ciudad = $_POST['ciudad'];
+
+        echo "<h2>Tus Datos:</h2>";
+        echo "<div class='resultado'>";
+        echo "Hola <b>" . htmlspecialchars($nombre) . "</b>, veo que vives en <span class='texto-rojo'>" . htmlspecialchars($ciudad) . "</span>.";
+        echo "</div>";
+
+    } else {
+        echo "<h3>No se recibieron datos. Por favor, vuelve al formulario.</h3>";
+    }
+    ?>
+
+    <a href="ejercicio6.html" class="volver">Volver al formulario</a>
+    <a href="index.html" class="volver">Volver al Menú Principal</a>
+
+</body>
+</html>
+---------------
+mostar guiones
+------------
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado - Guiones</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+        .resultado { font-size: 24px; font-weight: bold; letter-spacing: 2px; margin: 20px auto; padding: 20px; border: 2px dashed #333; display: inline-block; background-color: #e6f7ff; }
+        a.volver { display: block; margin-top: 20px; color: #333; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <?php
+    include 'utiles.php';
+
+    if (isset($_GET['cadena']) && isset($_GET['guiones'])) {
+        
+        $palabra = $_GET['cadena'];
+        $n_guiones = $_GET['guiones'];
+
+        $miUtil = new utiles($palabra);
+
+        echo "<h2>Resultado de la Operación:</h2>";
+        echo "<div class='resultado'>";
+        echo htmlspecialchars($miUtil->aumentarguiones($n_guiones));
+        echo "</div>";
+
+    } else {
+        echo "<h3>Faltan parámetros. Usa el formulario.</h3>";
+    }
+    ?>
+
+    <a href="pregunta4.html" class="volver">Intentar con otra palabra</a>
+    <a href="index.html" class="volver">Volver al Menú Principal</a>
+
+</body>
+</html>
+----------------
+útiles
+-------------
+<?php
+class utiles {
+    private $cadena;
+
+    public function __construct($cadena) {
+        $this->cadena = $cadena;
+    }
+
+    public function aumentarguiones($n) {
+        $guiones = str_repeat('-', $n);
+        
+        $letras = str_split($this->cadena);
+        
+        $resultado = implode($guiones, $letras);
+        
+        return $resultado;
+    }
+}
+?>

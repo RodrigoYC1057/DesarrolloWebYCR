@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6 - Datos Personales</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { width: 300px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; background-color: #f9f9f9; }
+        input[type="text"] { width: 100%; padding: 8px; margin: 10px 0; box-sizing: border-box; }
+        input[type="submit"] { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; cursor: pointer; width: 100%; }
+        input[type="submit"]:hover { background-color: #45a049; }
+        a.volver { display: block; text-align: center; margin-top: 15px; color: #333; text-decoration: none; }
+        a.volver:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Ingresa tus datos</h2>
+    <form action="mostrar.php" method="POST">
+        <label for="nombre">Tu Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="ciudad">Ciudad donde vives:</label>
+        <input type="text" id="ciudad" name="ciudad" required>
+
+        <input type="submit" value="Enviar Datos">
+    </form>
+    
+    <a href="index.html" class="volver">Volver al Menú Principal</a>
+</div>
+
+</body>
+</html>
