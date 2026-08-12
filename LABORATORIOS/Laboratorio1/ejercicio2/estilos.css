@@ -1,0 +1,291 @@
+/* ============================================================
+   EJERCICIO 2 - Portal de noticias con CSS Grid y Responsive
+   Archivo: estilos.css
+   ============================================================ */
+
+/* ---------- 1. Variables globales ---------- */
+:root {
+  --color-principal: #16324f;
+  --color-acento: #f2a71b;
+  --color-secundario: #1e8f89;
+  --color-fondo: #eef2f5;
+  --color-borde: #d7dee4;
+  --color-texto: #2c2c2c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--color-secundario);
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  margin: 0 0 8px 0;
+}
+
+/* ============================================================
+   2. GRID PRINCIPAL - Mobile first (base = móvil, 1 columna)
+   ============================================================ */
+.layout {
+  display: grid;
+  grid-template-areas:
+    "cabecera"
+    "navegacion"
+    "contenido"
+    "lateral"
+    "pie";
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px;
+}
+
+.cabecera    { grid-area: cabecera; }
+.navegacion  { grid-area: navegacion; }
+.contenido   { grid-area: contenido; }
+.lateral     { grid-area: lateral; }
+.pie         { grid-area: pie; }
+
+/* ---------- 3. Cabecera ---------- */
+.cabecera {
+  background: linear-gradient(120deg, var(--color-principal), var(--color-secundario));
+  color: #ffffff;
+  padding: 22px 26px;
+  border-radius: 8px;
+}
+
+.cabecera h1 {
+  font-size: 1.6rem;
+}
+
+.cabecera p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #d9e4ee;
+}
+
+/* ---------- 4. Navegación ---------- */
+.navegacion {
+  background-color: #ffffff;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.navegacion h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #7a8794;
+  letter-spacing: 0.05em;
+}
+
+.navegacion ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navegacion li {
+  margin-bottom: 4px;
+}
+
+.navegacion a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--color-texto);
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.navegacion a:hover {
+  background-color: #f0f4f7;
+}
+
+.navegacion a.activo {
+  background-color: var(--color-principal);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ---------- 5. Contenido: galería anidada con Grid ---------- */
+.contenido {
+  background-color: #ffffff;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.contenido h2 {
+  border-bottom: 2px solid var(--color-fondo);
+  padding-bottom: 10px;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.tarjeta {
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.tarjeta img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tarjeta h3,
+.tarjeta p,
+.tarjeta .etiqueta,
+.tarjeta .leer-mas {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+.tarjeta h3 {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.tarjeta p {
+  font-size: 0.85rem;
+  color: #555555;
+  flex-grow: 1;
+}
+
+.tarjeta .leer-mas {
+  margin-bottom: 14px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  color: #ffffff;
+  width: fit-content;
+}
+
+.etiqueta--web        { background-color: var(--color-secundario); }
+.etiqueta--ia          { background-color: #8e3b8f; }
+.etiqueta--redes      { background-color: #1e6f8f; }
+.etiqueta--seguridad  { background-color: #b0432e; }
+.etiqueta--eventos    { background-color: #c9932b; }
+
+/* ---------- 6. Lateral ---------- */
+.lateral {
+  background-color: #ffffff;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.lateral h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #7a8794;
+  letter-spacing: 0.05em;
+}
+
+.lateral ol {
+  padding-left: 18px;
+  font-size: 0.85rem;
+}
+
+.lateral ol li {
+  margin-bottom: 6px;
+}
+
+.boletin {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--color-borde);
+}
+
+.boletin p {
+  font-size: 0.85rem;
+  color: #555555;
+}
+
+.boton-suscribirse {
+  display: inline-block;
+  background-color: var(--color-secundario);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.boton-suscribirse:hover {
+  background-color: var(--color-principal);
+  text-decoration: none;
+}
+
+/* ---------- 7. Pie ---------- */
+.pie {
+  background-color: var(--color-principal);
+  color: #ffffff;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+/* ============================================================
+   8. MEDIA QUERIES - Mobile first (min-width hacia arriba)
+   ============================================================ */
+
+/* ----- Tablet: >= 768px -> 2 columnas ----- */
+@media (min-width: 768px) {
+  .layout {
+    grid-template-areas:
+      "cabecera cabecera"
+      "navegacion contenido"
+      "lateral   contenido"
+      "pie       pie";
+    grid-template-columns: 220px 1fr;
+  }
+}
+
+/* ----- Escritorio: >= 1024px -> 3 columnas ----- */
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-areas:
+      "cabecera   cabecera   cabecera"
+      "navegacion contenido  lateral"
+      "pie        pie        pie";
+    grid-template-columns: 230px 1fr 260px;
+  }
+}

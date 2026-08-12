@@ -1,0 +1,359 @@
+/* ============================================================
+   EJERCICIO 1 - Portal de inscripción a un taller
+   Archivo: estilos.css
+   ============================================================ */
+
+/* ---------- 1. Variables y reset básico ---------- */
+:root {
+  --color-primario: #16324f;   /* azul institucional */
+  --color-acento: #f2a71b;     /* naranja / dorado */
+  --color-secundario: #1e8f89; /* teal */
+  --color-fondo: #f4f6f8;
+  --color-borde: #d7dee4;
+  --color-texto: #2c2c2c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  line-height: 1.5;
+}
+
+/* ---------- 2. Selector por etiqueta ---------- */
+h1, h2, h3 {
+  color: var(--color-primario);
+  margin: 0 0 8px 0;
+}
+
+a {
+  color: var(--color-secundario);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- 3. Cabecera con Flexbox (selector por clase) ---------- */
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--color-primario);
+  border-bottom: 4px solid var(--color-acento);
+  padding: 14px 24px;
+  color: #ffffff;
+}
+
+.cabecera__logo {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cabecera__titulos {
+  flex: 1;
+}
+
+.cabecera__titulos h1 {
+  color: #ffffff;
+  font-size: 1.3rem;
+}
+
+.cabecera__titulos p {
+  margin: 2px 0 0 0;
+  font-size: 0.85rem;
+  color: #d9e4ee;
+}
+
+.cabecera__nav ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cabecera__nav a {
+  color: #ffffff;
+  background-color: #ffffff22;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: background-color 0.25s ease;
+}
+
+.cabecera__nav a:hover {
+  background-color: var(--color-acento);
+  text-decoration: none;
+  color: var(--color-primario);
+}
+
+/* ---------- 4. Secciones generales ---------- */
+main {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 20px;
+}
+
+.seccion {
+  background-color: #ffffff;
+  border: 1px solid var(--color-borde);
+  border-left: 5px solid var(--color-secundario);
+  border-radius: 6px;
+  padding: 22px 26px;
+  margin-bottom: 28px;
+}
+
+.seccion h2 {
+  border-bottom: 2px dashed var(--color-acento);
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+}
+
+/* ---------- 5. Sección 1: figure + listas ---------- */
+.figura-taller {
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.figura-taller img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.figura-taller figcaption {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #666666;
+  margin-top: 6px;
+}
+
+.info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.info-grid > div {
+  flex: 1 1 240px;
+}
+
+.info-grid ul,
+.info-grid ol {
+  padding-left: 20px;
+}
+
+.info-grid dt {
+  font-weight: bold;
+  color: var(--color-secundario);
+  margin-top: 6px;
+}
+
+.info-grid dd {
+  margin: 0 0 4px 0;
+}
+
+/* ---------- 6. Sección 2: tabla (selector descendente) ---------- */
+.tabla-horarios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.tabla-horarios caption {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.tabla-horarios th,
+.tabla-horarios td {
+  border: 1px solid var(--color-borde);
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.tabla-horarios thead th {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.tabla-horarios tbody tr:nth-child(even) {
+  background-color: #f0f4f7;
+}
+
+.tabla-horarios tbody tr:hover {
+  background-color: #e4f0ee;
+}
+
+.tabla-horarios .fila-total {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.nota-enlace {
+  font-size: 0.85rem;
+  margin-top: 14px;
+}
+
+/* ---------- 7. Sección 3: formulario ---------- */
+.formulario fieldset {
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.formulario legend {
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.campo {
+  margin-bottom: 14px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+/* Selector por id: comportamiento particular de un campo específico */
+#comentarios {
+  resize: vertical;
+}
+
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="password"],
+.formulario input[type="date"],
+.formulario input[type="number"],
+.formulario input[type="file"],
+.formulario select,
+.formulario textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 0 3px #1e8f8933;
+}
+
+.campo--radio {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  border: none;
+  padding: 0;
+  margin-top: -4px;
+}
+
+.campo--radio legend {
+  background: none;
+  color: var(--color-primario);
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.campo--checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: normal;
+}
+
+.acciones-formulario {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.boton {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.25s ease;
+}
+
+.boton--primario {
+  background-color: var(--color-primario);
+  color: #ffffff;
+}
+
+.boton--primario:hover {
+  background-color: var(--color-secundario);
+  transform: translateY(-2px);
+}
+
+.boton--secundario {
+  background-color: #e2e8ee;
+  color: var(--color-primario);
+}
+
+.boton--secundario:hover {
+  background-color: #cfd9e2;
+}
+
+/* ---------- 8. Pie de página ---------- */
+.pie {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  text-align: center;
+  padding: 16px 10px;
+  font-size: 0.8rem;
+}
+
+.pie a {
+  color: var(--color-acento);
+}
+
+/* ---------- 9. Responsive básico ---------- */
+@media (max-width: 700px) {
+  .cabecera {
+    flex-wrap: wrap;
+  }
+
+  .cabecera__nav ul {
+    flex-wrap: wrap;
+  }
+
+  .info-grid {
+    flex-direction: column;
+  }
+}

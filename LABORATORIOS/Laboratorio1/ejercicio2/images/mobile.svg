@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2b5fa8"/>
+      <stop offset="100%" stop-color="#173765"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="220" fill="url(#g)"/>
+  <circle cx="40" cy="180" r="55" fill="none" stroke="#ffffff33" stroke-width="5"/>
+  <circle cx="360" cy="40" r="70" fill="none" stroke="#ffffff22" stroke-width="5"/>
+  <text x="200" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#ffffff">MOBILE</text>
+</svg>
