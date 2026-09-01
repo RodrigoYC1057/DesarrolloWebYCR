@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Pizarra</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        form { max-width: 420px; padding: 20px; border: 1px solid #ccc; }
+        label { display: block; margin-top: 12px; font-weight: bold; }
+        input, select, button { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        button { cursor: pointer; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Configurar Pizarra</h1>
+
+    <form action="menu3.php" method="POST">
+        <label for="palabra">Palabra:</label>
+        <input type="text" name="palabra" id="palabra" required>
+
+        <label for="color">Color del texto:</label>
+        <select name="color" id="color" required>
+            <option value="white">Blanco</option>
+            <option value="black">Negro</option>
+            <option value="red">Rojo</option>
+            <option value="blue">Azul</option>
+            <option value="green">Verde</option>
+            <option value="yellow">Amarillo</option>
+        </select>
+
+        <label for="color_fondo">Color de fondo:</label>
+        <select name="color_fondo" id="color_fondo" required>
+            <option value="blue">Azul</option>
+            <option value="black">Negro</option>
+            <option value="red">Rojo</option>
+            <option value="green">Verde</option>
+            <option value="yellow">Amarillo</option>
+            <option value="white">Blanco</option>
+        </select>
+
+        <button type="submit">Continuar</button>
+    </form>
+</body>
+</html>

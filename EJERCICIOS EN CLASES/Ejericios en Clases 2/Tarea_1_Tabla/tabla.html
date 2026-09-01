@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generar tabla</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        form { max-width: 400px; padding: 20px; border: 1px solid #ccc; }
+        label { display: block; margin-top: 12px; font-weight: bold; }
+        select, input, button { width: 100%; padding: 8px; margin-top: 5px; }
+        button { cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Generador de tablas</h1>
+
+    <form action="tabla.php" method="POST">
+        <label for="operacion">Operación:</label>
+        <select name="operacion" id="operacion" required>
+            <option value="suma">Suma</option>
+            <option value="resta">Resta</option>
+            <option value="multiplicacion">Multiplicación</option>
+            <option value="division">División</option>
+        </select>
+
+        <label for="n">Número n (1 al 10):</label>
+        <input type="number" name="n" id="n" min="1" max="10" required>
+
+        <button type="submit">Generar</button>
+    </form>
+</body>
+</html>
