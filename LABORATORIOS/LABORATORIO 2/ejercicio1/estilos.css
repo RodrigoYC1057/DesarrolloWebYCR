@@ -1,0 +1,131 @@
+/* estilos.css - hoja de estilos comun (Ejercicio 1 y 2) */
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef1f7;
+    color: #1c2b45;
+    line-height: 1.5;
+}
+body.tema-oscuro { background: #101a30; color: #e8edf7; }
+a { color: inherit; }
+
+.cabecera, .pie { background: #16233f; color: #fff; }
+.cabecera {
+    padding: 14px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.cabecera h1 { margin: 0; font-size: 1.25rem; }
+.cabecera p { margin: 2px 0 0; font-size: 0.8rem; color: #b9c4dc; }
+.cabecera nav a { margin-left: 8px; }
+.pie { text-align: center; padding: 12px; font-size: 0.8rem; color: #b9c4dc; }
+
+.boton, button {
+    display: inline-block;
+    background: #2a3f66;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+}
+.formulario-filtro button,
+.formulario-identificacion button,
+.formulario-agregar button { background: #f0a500; color: #1c2b45; font-weight: bold; }
+table button, .linea-acciones button { background: #c0392b; }
+
+.contenedor { max-width: 1000px; margin: 20px auto; padding: 0 20px 40px; }
+section { margin-bottom: 28px; }
+h2 { border-bottom: 2px dashed #f0a500; padding-bottom: 8px; margin-bottom: 14px; font-size: 1.1rem; }
+h3 { font-size: 0.95rem; margin: 14px 0 8px; }
+
+.formulario-filtro, .formulario-identificacion, .caja-info {
+    background: #fff;
+    border: 1px solid #d7deec;
+    border-radius: 8px;
+    padding: 16px 20px;
+}
+body.tema-oscuro .formulario-filtro,
+body.tema-oscuro .formulario-identificacion,
+body.tema-oscuro .caja-info { background: #1b2740; border-color: #2c3b5c; }
+
+.formulario-filtro select, .formulario-filtro button,
+.formulario-identificacion input, .formulario-identificacion button {
+    padding: 6px 10px;
+    margin-top: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.url-generada { margin-top: 10px; font-size: 0.8rem; color: #667; }
+
+.aviso, .mensaje-confirmacion {
+    background: #fff3cd;
+    border-left: 4px solid #f0a500;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+.mensaje-confirmacion { background: #e3f6ec; border-left-color: #2ecc71; }
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+}
+.tarjeta { background: #1c2b45; color: #fff; border-radius: 8px; overflow: hidden; }
+.tarjeta-codigo { text-align: center; font-weight: bold; padding: 14px; letter-spacing: 1px; }
+.tarjeta-cuerpo { background: #fff; color: #1c2b45; padding: 14px; }
+.etiqueta-categoria {
+    display: inline-block;
+    background: #f0a500;
+    color: #1c2b45;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+}
+.etiqueta-agotado {
+    display: inline-block;
+    background: #e74c3c;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-top: 6px;
+}
+.tarjeta h3 { margin: 0 0 6px; font-size: 1rem; }
+.tarjeta .precio { font-weight: bold; font-size: 1.05rem; margin: 4px 0; }
+.tarjeta .descuento { color: #d35400; font-size: 0.8rem; margin: 4px 0; }
+.tarjeta .stock { font-size: 0.8rem; color: #555; margin: 4px 0 0; }
+.formulario-agregar { display: flex; gap: 6px; margin-top: 10px; }
+.formulario-agregar input { width: 50px; padding: 4px; border-radius: 4px; border: 1px solid #ccc; }
+
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 6px; overflow: hidden; }
+body.tema-oscuro table { background: #1b2740; }
+th, td { padding: 8px 12px; border-bottom: 1px solid #e0e4ee; text-align: left; font-size: 0.9rem; }
+body.tema-oscuro th, body.tema-oscuro td { border-bottom-color: #2c3b5c; }
+th { background: #f4f6fb; text-transform: uppercase; font-size: 0.75rem; }
+body.tema-oscuro th { background: #24304d; }
+.fila-destacada { background: #dde7fb !important; font-weight: bold; }
+body.tema-oscuro .fila-destacada { background: #2c3f66 !important; }
+
+.caja-codigo {
+    background: #0d1526;
+    color: #a9f7c9;
+    font-family: "Courier New", monospace;
+    font-size: 0.8rem;
+    padding: 14px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
