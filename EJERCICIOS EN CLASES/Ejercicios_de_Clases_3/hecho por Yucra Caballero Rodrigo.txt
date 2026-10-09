@@ -1,0 +1,46 @@
+TAREA DE CLASES 3 - PHP, SESIONES Y MYSQL
+
+ARCHIVOS
+- pregunta2/: formulario GET y procesamiento de cadenas.
+- pregunta3/: clase Estante y menu3.php con sesiones.
+- pregunta4/: listado, insercion y eliminacion de libros con MySQL.
+- index.html: menu principal.
+
+COMO EJECUTAR EN WINDOWS CON XAMPP Y VISUAL STUDIO CODE
+
+1. Descomprime la carpeta Tarea_Clases_3 en:
+   C:\xampp\htdocs\
+   Debe quedar, por ejemplo:
+   C:\xampp\htdocs\Tarea_Clases_3\index.html
+
+2. Abre el Panel de Control de XAMPP y enciende Apache.
+   Para la Pregunta 4 tambien enciende MySQL.
+
+3. Abre la carpeta Tarea_Clases_3 desde Visual Studio Code para revisar o editar los archivos.
+   IMPORTANTE: no abras los archivos PHP con Live Server. PHP se ejecuta mediante Apache.
+
+4. En el navegador abre:
+   http://localhost/Tarea_Clases_3/
+
+5. Pregunta 2:
+   Entra al enlace de la Pregunta 2, escribe una cadena y el numero de guiones.
+   Pulsa Procesar. El formulario envia los datos por GET a procesar.php.
+
+6. Pregunta 3:
+   Entra al enlace de la Pregunta 3. Primero crea el estante indicando la capacidad
+   maxima por nivel. Despues puedes insertar, quitar o mostrar su contenido.
+   La sesion conserva el estante entre operaciones mientras la sesion del navegador siga activa.
+
+7. Pregunta 4 - configurar la base de datos:
+   a) Abre http://localhost/phpmyadmin
+   b) Entra a la pestaña Importar.
+   c) Selecciona el archivo:
+      C:\xampp\htdocs\Tarea_Clases_3\pregunta4\bd_biblioteca.sql
+   d) Pulsa Importar/Ejecutar.
+   e) Abre http://localhost/Tarea_Clases_3/pregunta4/listar.php
+
+La conexion esta configurada para XAMPP por defecto: usuario root y contrasena vacia.
+Si tu instalacion de MySQL tiene otra contrasena, modifica conexion.php.
+
+NOTA: el PDF recibido muestra las Preguntas 2, 3 y 4. No aparece una consigna legible
+para la Pregunta 1, por eso este proyecto incluye las tres preguntas visibles.
