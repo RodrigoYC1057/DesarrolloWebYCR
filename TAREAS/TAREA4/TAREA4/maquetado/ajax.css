@@ -1,0 +1,28 @@
+/* Estilos adicionales para la version AJAX */
+#contenido {
+  flex: 1;
+  min-width: 0;
+  text-align: center; /* en la tarea 3 todo estaba dentro de un div centrado */
+}
+
+ul.menu li.activo {
+  background-color: yellow;
+}
+
+.estado {
+  color: blanchedalmond;
+  min-height: 1.2em;
+}
+
+.error {
+  color: yellow;
+  font-weight: bold;
+}
+
+.cargando {
+  color: blanchedalmond;
+}
+
+button {
+  cursor: pointer;
+}

@@ -1,0 +1,71 @@
+#contenedor{    /* Estilos para el contenedor principal */
+width: auto;
+margin:0 auto;
+border:0px solid rgb(33, 19, 50);
+background-color: rgb(153, 41, 69);
+
+}
+
+
+
+
+header{   
+width: auto;
+border:3px solid black;
+height: 90px;
+display:flex; /* Utilizamos flexbox para centrar el contenido del header */
+flex-direction: row; /* Alineamos los elementos en una fila */
+justify-content: space-between;  /* Distribuimos el espacio entre los elementos del header */
+background-color: rgb(35, 22, 25);
+}
+
+header img{
+    height: 90px; /* Ajusta la altura de la imagen al tamaño del header */
+}
+
+header div{
+padding-top: 25px;
+text-align: center;
+color:blanchedalmond;
+}
+
+
+main{
+    width: 100%;
+    display: flex;
+}
+nav{
+    width: 150px;
+    background-color: rgb(191, 210, 68);
+    padding: 15px;
+}
+
+/*aside{
+    width: 750px;
+    background-color: rgb(38, 132, 126);
+}*/
+ul.menu {
+    list-style: none;
+    margin: 0px;
+    padding: 0;
+    
+}
+ul.menu li a {
+    text-decoration: none;
+    padding: 5px;
+    width: 100px;
+    display: inline-block;
+    
+}
+ul.menu li {
+    width: 100px;
+    border: 1px solid rgb(8, 5, 5);
+    
+    padding: 5px;
+    margin-top: 10px;
+}
+ul.menu li:hover {
+    background-color: yellow;
+    
+}
+

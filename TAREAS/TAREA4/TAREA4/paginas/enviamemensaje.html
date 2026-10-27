@@ -1,0 +1,22 @@
+<h4 class="resaltado2">ENVIAME UN MENSAJE A</h4>
+<a href="mailto:marco@gmail.com">mi correo personal</a>
+
+<div></div>
+<h2>O REGISTRAR TU CORREO</h2>
+
+<!-- Formulario AJAX: CREATE -->
+<form data-api="api/contactos.php">
+  <br />
+  <label for="correo">Correo:</label>
+  <input type="email" name="correo" id="correo" required />
+  <br />
+  <label for="edad">Edad:</label>
+  <input type="number" name="edad" id="edad" min="1" max="120" required />
+  <input type="submit" value="Enviar" />
+  <br />
+  <p class="estado"></p>
+</form>
+
+<!-- READ / UPDATE / DELETE: tabla de correos registrados -->
+<h2 class="resaltado3">CORREOS REGISTRADOS</h2>
+<div data-lista="contactos"></div>

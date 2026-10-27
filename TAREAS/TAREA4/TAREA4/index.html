@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi pagina personal - AJAX</title>
+    <link rel="stylesheet" href="clases/tiposLetras.css" />
+    <link rel="stylesheet" href="clases/resaltados.css" />
+    <link rel="stylesheet" href="clases/centrados.css" />
+    <link rel="stylesheet" href="maquetado/maqueta.css" />
+    <link rel="stylesheet" href="maquetado/ajax.css" />
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <div id="contenedor">
+      <header>
+        <img src="imagenes/tecnologia.jpg" alt="" />
+        <div>
+          Universidad Mayor De San Fransisco
+          <br />
+          facultad de tecnlogia
+        </div>
+        <img src="imagenes/usfx.jpg" alt="" />
+      </header>
+
+      <main>
+        <nav>
+          <ul class="menu">
+            <li><a href="#inicio" data-pagina="inicio">Inicio</a></li>
+            <li><a href="#yo" data-pagina="yo">Yo</a></li>
+            <li><a href="#miciudad" data-pagina="miciudad">Mi Ciudad</a></li>
+            <li><a href="#mifamilia" data-pagina="mifamilia">Mi Familia</a></li>
+            <li><a href="#misamigos" data-pagina="misamigos">Mis Amigos</a></li>
+            <li><a href="#mishobbies" data-pagina="mishobbies">Mis Hobbies</a></li>
+            <li><a href="#enviamemensaje" data-pagina="enviamemensaje">Enviame un mensaje</a></li>
+          </ul>
+        </nav>
+
+        <!-- Aqui se carga el contenido de cada pagina con fetch() -->
+        <section id="contenido"></section>
+      </main>
+    </div>
+  </body>
+</html>
